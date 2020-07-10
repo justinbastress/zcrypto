@@ -139,7 +139,8 @@ DHParams = SubRecordType({
 RSAPublicKey = SubRecordType({
     "exponent": Unsigned32BitInteger(doc="The RSA key's public exponent (e)."),
     "modulus": IndexedBinary(doc="The RSA key's modulus (n) in big-endian encoding."),
-    "length": Unsigned16BitInteger(doc="Bit-length of modulus."),
+    "length": Unsigned16BitInteger(doc="Bit-length of modulus (number of octets * 8)."),
+    "bit_length": Unsigned16BitInteger(doc="Bit-length of modulus (number of bits, not counting leading zeros)"),
 }, doc="Container for the public portion (modulus and exponent) of an RSA asymmetric key.")
 
 # json/rsa.go: RSAClientParams
